@@ -1,0 +1,1297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asia Collins — Applied AI Analyst</title>
+  <meta name="description" content="Asia Collins: IT and operations professional specializing in AI-driven workflow design, process optimization, and data insight generation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── TOKENS ─────────────────────────────────────────────────── */
+    :root {
+      --navy:      #0F2744;
+      --navy-mid:  #1C3A5E;
+      --navy-soft: #1E3F6B;
+      --teal:      #00C2A8;
+      --teal-dim:  #00A891;
+      --teal-glow: rgba(0, 194, 168, 0.15);
+      --slate:     #64748B;
+      --slate-lt:  #94A3B8;
+      --off-white: #F7F9FC;
+      --white:     #FFFFFF;
+      --card-bg:   #FFFFFF;
+      --border:    #E2E8F0;
+      --text-body: #1E293B;
+      --text-soft: #475569;
+    }
+
+    /* ── RESET ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--off-white);
+      color: var(--text-body);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ────────────────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2.5rem;
+      height: 64px;
+      background: rgba(15, 39, 68, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      transition: all 0.3s ease;
+    }
+    .nav-logo {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 1.05rem;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+    .nav-logo span { color: var(--teal); }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--slate-lt);
+      transition: color 0.2s;
+      letter-spacing: 0.03em;
+    }
+    .nav-links a:hover { color: var(--teal); }
+    .nav-cta {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: var(--teal);
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+    /* ── HERO ───────────────────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      display: flex;
+      align-items: center;
+      padding: 6rem 2.5rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, rgba(0,194,168,0.07) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      left: -5%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,194,168,0.04) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+    .hero-eyebrow {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--teal);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .hero-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .hero-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+      color: var(--teal);
+      margin-bottom: 1.6rem;
+      letter-spacing: 0.01em;
+    }
+    .hero-desc {
+      font-size: 1rem;
+      color: #94A3B8;
+      line-height: 1.75;
+      margin-bottom: 2.2rem;
+      max-width: 480px;
+    }
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 2.4rem;
+    }
+    .badge {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,194,168,0.35);
+      color: var(--teal);
+      background: rgba(0,194,168,0.07);
+      letter-spacing: 0.06em;
+      white-space: nowrap;
+    }
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      background: var(--teal);
+      color: var(--navy);
+      padding: 0.75rem 1.8rem;
+      border-radius: 8px;
+      letter-spacing: 0.03em;
+      transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary:hover {
+      background: var(--teal-dim);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,194,168,0.25);
+    }
+    .btn-secondary {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: var(--slate-lt);
+      padding: 0.75rem 1.8rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      transition: border-color 0.2s, color 0.2s, transform 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-secondary:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      transform: translateY(-2px);
+    }
+
+    /* ── TERMINAL CARD (hero right) ─────────────────────────────── */
+    .terminal {
+      background: #0A1929;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.08);
+      overflow: hidden;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.4), 0 0 0 1px rgba(0,194,168,0.1);
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.85rem 1.2rem;
+      background: #0D2137;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+    .terminal-dot:nth-child(1) { background: #FF5F57; }
+    .terminal-dot:nth-child(2) { background: #FFBD2E; }
+    .terminal-dot:nth-child(3) { background: #28C840; }
+    .terminal-title {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: #4A6080;
+      margin-left: 0.4rem;
+      letter-spacing: 0.06em;
+    }
+    .terminal-body {
+      padding: 1.5rem 1.5rem 1.8rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+    .t-line { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.1rem; }
+    .t-prompt { color: var(--teal); flex-shrink: 0; }
+    .t-cmd { color: #CBD5E0; }
+    .t-comment { color: #3D5A80; }
+    .t-output { color: #94A3B8; padding-left: 1.4rem; }
+    .t-highlight { color: var(--teal); }
+    .t-string { color: #7DD3FC; }
+    .t-num { color: #FCA5A5; }
+    .typewriter-line {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .typewriter-output {
+      color: var(--teal);
+      min-height: 1.5em;
+    }
+    .cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--teal);
+      margin-left: 2px;
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* ── METRICS STRIP ──────────────────────────────────────────── */
+    .metrics {
+      background: var(--navy-mid);
+      padding: 2rem 2.5rem;
+      border-bottom: 1px solid rgba(0,194,168,0.12);
+    }
+    .metrics-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      text-align: center;
+    }
+    .metric-item { padding: 0.5rem; }
+    .metric-num {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1.1;
+    }
+    .metric-label {
+      font-size: 0.8rem;
+      color: var(--slate-lt);
+      margin-top: 0.3rem;
+      letter-spacing: 0.03em;
+    }
+    .metric-divider {
+      width: 1px;
+      background: rgba(255,255,255,0.08);
+      align-self: stretch;
+    }
+
+    /* ── SECTION SCAFFOLDING ────────────────────────────────────── */
+    .section {
+      padding: 5rem 2.5rem;
+    }
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--teal);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .section-heading {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.6rem;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--text-soft);
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+    .section--dark {
+      background: var(--navy);
+    }
+    .section--dark .section-heading { color: var(--white); }
+    .section--dark .section-sub { color: var(--slate-lt); }
+    .section--alt {
+      background: #EEF2F7;
+    }
+
+    /* ── FADE-IN ANIMATION ──────────────────────────────────────── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── ABOUT ──────────────────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 3fr 2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-text p {
+      font-size: 1rem;
+      color: var(--text-soft);
+      line-height: 1.8;
+      margin-bottom: 1.2rem;
+    }
+    .about-text p strong { color: var(--navy); font-weight: 600; }
+    .about-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .sidebar-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      border-left: 3px solid var(--teal);
+    }
+    .sidebar-card-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--teal);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.35rem;
+    }
+    .sidebar-card-value {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--navy);
+    }
+    .sidebar-card-note {
+      font-size: 0.8rem;
+      color: var(--slate);
+      margin-top: 0.1rem;
+    }
+
+    /* ── COMPETENCIES ───────────────────────────────────────────── */
+    .competency-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .comp-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.6rem;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .comp-card:hover {
+      border-color: rgba(0,194,168,0.4);
+      transform: translateY(-3px);
+    }
+    .comp-icon {
+      font-size: 1.6rem;
+      margin-bottom: 0.9rem;
+      display: block;
+    }
+    .comp-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .comp-desc {
+      font-size: 0.875rem;
+      color: #64748B;
+      line-height: 1.7;
+    }
+
+    /* ── EXPERIENCE ─────────────────────────────────────────────── */
+    .timeline {
+      position: relative;
+      padding-left: 2rem;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--teal), transparent);
+    }
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.8rem;
+      padding-left: 1.8rem;
+    }
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: -2.4rem;
+      top: 8px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--teal);
+      border: 2px solid var(--off-white);
+      box-shadow: 0 0 0 3px rgba(0,194,168,0.2);
+    }
+    .timeline-meta {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-role {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .timeline-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--teal);
+      background: var(--teal-glow);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+    .timeline-company {
+      font-size: 0.9rem;
+      color: var(--slate);
+      margin-bottom: 0.9rem;
+      font-weight: 500;
+    }
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+    .timeline-bullets li {
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      line-height: 1.7;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-size: 0.7rem;
+      top: 0.25em;
+    }
+    .timeline-bullets li strong { color: var(--navy); font-weight: 600; }
+
+    /* ── SKILLS ─────────────────────────────────────────────────── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .skill-group {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .skill-group-title {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 2px solid var(--teal);
+      display: inline-block;
+    }
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .skill-tag {
+      font-size: 0.8rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 20px;
+      background: var(--off-white);
+      color: var(--text-soft);
+      border: 1px solid var(--border);
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+    .skill-tag:hover {
+      background: var(--teal-glow);
+      color: var(--navy);
+      border-color: var(--teal);
+    }
+    .skill-tag.featured {
+      background: var(--teal-glow);
+      color: var(--navy);
+      border-color: rgba(0,194,168,0.4);
+      font-weight: 600;
+    }
+
+    /* ── EDUCATION & CERTS ──────────────────────────────────────── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+    }
+    .edu-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 1.6rem;
+      transition: border-color 0.2s;
+    }
+    .edu-card:hover { border-color: rgba(0,194,168,0.4); }
+    .edu-icon {
+      font-size: 1.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .edu-degree {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.3rem;
+      line-height: 1.4;
+    }
+    .edu-school {
+      font-size: 0.85rem;
+      color: var(--teal);
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+    }
+    .edu-note {
+      font-size: 0.8rem;
+      color: var(--slate-lt);
+    }
+
+    /* ── CONTACT ────────────────────────────────────────────────── */
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .contact-left h2 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--navy);
+      letter-spacing: -0.02em;
+      margin-bottom: 0.8rem;
+    }
+    .contact-left p {
+      font-size: 1rem;
+      color: var(--text-soft);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 0.9rem;
+      font-size: 0.9rem;
+      color: var(--text-soft);
+      transition: color 0.2s;
+      padding: 0.8rem 1rem;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--white);
+    }
+    .contact-link:hover { color: var(--navy); border-color: var(--teal); }
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: var(--teal-glow);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .contact-link-text strong { display: block; color: var(--navy); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; font-family: 'DM Mono', monospace; }
+    .contact-link-text span { font-size: 0.9rem; }
+    .contact-right {
+      background: var(--navy);
+      border-radius: 16px;
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+    }
+    .contact-right h3 {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+    .contact-right p {
+      font-size: 0.875rem;
+      color: var(--slate-lt);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .contact-fields { display: flex; flex-direction: column; gap: 1rem; }
+    .contact-fields input,
+    .contact-fields textarea {
+      width: 100%;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      color: var(--white);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    .contact-fields input::placeholder,
+    .contact-fields textarea::placeholder { color: #4A6080; }
+    .contact-fields input:focus,
+    .contact-fields textarea:focus { border-color: var(--teal); }
+    .contact-fields textarea { resize: vertical; min-height: 100px; }
+    .contact-submit {
+      width: 100%;
+      background: var(--teal);
+      color: var(--navy);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.85rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      letter-spacing: 0.04em;
+    }
+    .contact-submit:hover { background: var(--teal-dim); transform: translateY(-1px); }
+
+    /* ── FOOTER ─────────────────────────────────────────────────── */
+    .footer {
+      background: var(--navy);
+      padding: 1.8rem 2.5rem;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-name {
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--slate-lt);
+    }
+    .footer-name span { color: var(--teal); }
+    .footer-note {
+      font-size: 0.8rem;
+      color: #2D4A6A;
+    }
+
+    /* ── MOBILE ─────────────────────────────────────────────────── */
+    .hamburger { display: none; }
+
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      .hamburger { display: block; background: none; border: none; cursor: pointer; }
+      .hamburger span {
+        display: block;
+        width: 22px; height: 2px;
+        background: var(--slate-lt);
+        margin: 5px 0;
+        transition: 0.3s;
+      }
+      .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .terminal { display: none; }
+      .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+      .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .competency-grid { grid-template-columns: 1fr 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .contact-wrap { grid-template-columns: 1fr; gap: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .nav { padding: 0 1.2rem; }
+      .hero { padding: 5rem 1.2rem 3rem; }
+      .section { padding: 3.5rem 1.2rem; }
+      .metrics { padding: 1.5rem 1.2rem; }
+      .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+      .competency-grid { grid-template-columns: 1fr; }
+      .footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+    }
+
+    /* ── REDUCED MOTION ─────────────────────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up { opacity: 1; transform: none; transition: none; }
+      .cursor { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav-logo">Asia <span>Collins</span></div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#competencies">Core Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#skills">Tech Skills</a></li>
+      <li><a href="#education">Education</a></li>
+    </ul>
+    <a href="mailto:collinsasiatech@gmail.com" class="nav-cta">Get in Touch ↗</a>
+    <button class="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Introduction">
+    <div class="hero-inner">
+      <div class="hero-left">
+        <p class="hero-eyebrow">// Applied AI Analyst · Atlanta, GA</p>
+        <h1 class="hero-name">Asia Collins</h1>
+        <p class="hero-title">AI-Driven Workflow Design &amp; Process Intelligence</p>
+        <p class="hero-desc">
+          I build analytical frameworks that turn ambiguous business problems into measurable outcomes.
+          5+ years operating at the intersection of data, operations, and AI — in environments where accuracy and speed both matter.
+        </p>
+        <div class="hero-badges">
+          <span class="badge">LLM Workflow Design</span>
+          <span class="badge">Process Optimization</span>
+          <span class="badge">ServiceNow</span>
+          <span class="badge">Scrum Master (CSM)</span>
+          <span class="badge">Secret Clearance Eligible</span>
+        </div>
+        <div class="hero-actions">
+          <a href="mailto:collinsasiatech@gmail.com" class="btn-primary">
+            <span>↗</span> Contact Me
+          </a>
+          <a href="#experience" class="btn-secondary">
+            <span>↓</span> View Experience
+          </a>
+        </div>
+      </div>
+
+      <!-- TERMINAL — the signature element -->
+      <div class="terminal" role="img" aria-label="Code terminal showing Asia's capabilities">
+        <div class="terminal-bar">
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <div class="terminal-dot"></div>
+          <span class="terminal-title">asia-collins.sh</span>
+        </div>
+        <div class="terminal-body">
+          <div class="t-line">
+            <span class="t-prompt">$</span>
+            <span class="t-cmd">analyst <span class="t-string">--profile</span> asia-collins</span>
+          </div>
+          <div class="t-line">
+            <span class="t-output"><span class="t-highlight">✓</span> Loading profile...</span>
+          </div>
+          <br/>
+          <div class="t-line">
+            <span class="t-comment"># Core metrics</span>
+          </div>
+          <div class="t-line">
+            <span class="t-output">experience:      <span class="t-num">5+</span> years</span>
+          </div>
+          <div class="t-line">
+            <span class="t-output">satisfaction:    <span class="t-num">+25%</span> improvement</span>
+          </div>
+          <div class="t-line">
+            <span class="t-output">risk_reduction:  <span class="t-num">-20%</span> exposure</span>
+          </div>
+          <div class="t-line">
+            <span class="t-output">records_audited: <span class="t-num">1,200+</span> /week</span>
+          </div>
+          <br/>
+          <div class="t-line">
+            <span class="t-prompt">$</span>
+            <span class="t-cmd">list-skills <span class="t-string">--category</span> ai</span>
+          </div>
+          <div class="typewriter-line t-line">
+            <span class="t-prompt">→</span>
+            <span class="typewriter-output" id="typewriter" aria-live="polite"></span>
+            <span class="cursor" aria-hidden="true"></span>
+          </div>
+          <br/>
+          <div class="t-line">
+            <span class="t-prompt">$</span>
+            <span class="t-cmd t-comment">█</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- METRICS STRIP -->
+  <div class="metrics" aria-label="Key achievements">
+    <div class="metrics-inner">
+      <div class="metric-item fade-up">
+        <div class="metric-num">25%</div>
+        <div class="metric-label">CSAT Improvement at DXC</div>
+      </div>
+      <div class="metric-item fade-up" style="transition-delay:0.1s">
+        <div class="metric-num">1,200+</div>
+        <div class="metric-label">Weekly Records Reviewed</div>
+      </div>
+      <div class="metric-item fade-up" style="transition-delay:0.2s">
+        <div class="metric-num">20%</div>
+        <div class="metric-label">Risk Exposure Reduced</div>
+      </div>
+      <div class="metric-item fade-up" style="transition-delay:0.3s">
+        <div class="metric-num">95%</div>
+        <div class="metric-label">Customer Satisfaction Rate</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section" id="about" aria-labelledby="about-heading">
+    <div class="section-inner">
+      <p class="section-label fade-up">About</p>
+      <h2 class="section-heading fade-up" id="about-heading">Analytical by nature.<br/>AI-enabled by practice.</h2>
+      <div class="about-grid">
+        <div class="about-text fade-up">
+          <p>
+            I operate at the intersection of <strong>business, data, and AI</strong> — where messy, ambiguous problems get translated into structured frameworks, repeatable workflows, and measurable results. My background spans enterprise IT operations, financial data analysis, and cross-functional stakeholder work across companies like DXC Technology and Bank of America.
+          </p>
+          <p>
+            What sets my approach apart: I don't just document problems — I <strong>redesign the process around them</strong>. Whether that's applying AI triage logic to a 300+ daily ticket queue, building analytical frameworks to catch discrepancies in million-record datasets, or creating playbooks that turn one-off fixes into reusable team assets.
+          </p>
+          <p>
+            I'm drawn to Nymbus because you're doing exactly what I believe in: <strong>replacing technical debt with agility</strong>, and building AI-first infrastructure that gives financial institutions a real competitive edge. That's the kind of problem I want to work on.
+          </p>
+        </div>
+        <div class="about-sidebar">
+          <div class="sidebar-card fade-up" style="transition-delay:0.1s">
+            <div class="sidebar-card-label">Location</div>
+            <div class="sidebar-card-value">Atlanta, GA</div>
+            <div class="sidebar-card-note">Open to remote</div>
+          </div>
+          <div class="sidebar-card fade-up" style="transition-delay:0.15s">
+            <div class="sidebar-card-label">Education</div>
+            <div class="sidebar-card-value">B.S. Information Technology</div>
+            <div class="sidebar-card-note">Western Governors University (In Progress)</div>
+          </div>
+          <div class="sidebar-card fade-up" style="transition-delay:0.2s">
+            <div class="sidebar-card-label">Certification</div>
+            <div class="sidebar-card-value">Certified Scrum Master (CSM)</div>
+            <div class="sidebar-card-note">Agile Enterprise Coach</div>
+          </div>
+          <div class="sidebar-card fade-up" style="transition-delay:0.25s">
+            <div class="sidebar-card-label">Clearance</div>
+            <div class="sidebar-card-value">Secret Clearance Eligible</div>
+            <div class="sidebar-card-note">U.S. Citizen</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMPETENCIES -->
+  <section class="section section--dark" id="competencies" aria-labelledby="comp-heading">
+    <div class="section-inner">
+      <p class="section-label fade-up">Core Capabilities</p>
+      <h2 class="section-heading fade-up" id="comp-heading">What I bring to the role</h2>
+      <p class="section-sub fade-up">Six capabilities that map directly to the Applied AI Analyst responsibilities at Nymbus.</p>
+      <div class="competency-grid">
+        <div class="comp-card fade-up">
+          <span class="comp-icon">🧩</span>
+          <div class="comp-title">Problem Structuring &amp; Analysis</div>
+          <div class="comp-desc">Break down ambiguous business problems into clear analytical frameworks. Developed at scale across financial datasets and enterprise IT environments with competing stakeholder needs.</div>
+        </div>
+        <div class="comp-card fade-up" style="transition-delay:0.08s">
+          <span class="comp-icon">🤖</span>
+          <div class="comp-title">AI-Driven Solutions</div>
+          <div class="comp-desc">Design and prototype AI-enabled workflows that improve efficiency, quality, and scalability. Applied LLM tooling and automation to triage, routing, and documentation workflows.</div>
+        </div>
+        <div class="comp-card fade-up" style="transition-delay:0.16s">
+          <span class="comp-icon">⚙️</span>
+          <div class="comp-title">Workflow &amp; Process Optimization</div>
+          <div class="comp-desc">Analyze existing workflows to find inefficiencies, gaps, and bottlenecks. Redesign for speed, consistency, and repeatability — with measurable results at every step.</div>
+        </div>
+        <div class="comp-card fade-up" style="transition-delay:0.24s">
+          <span class="comp-icon">📊</span>
+          <div class="comp-title">Data &amp; Insight Generation</div>
+          <div class="comp-desc">Synthesize large volumes of structured and unstructured data into actionable insights. Built analytical models and documentation frameworks across compliance, support, and finance domains.</div>
+        </div>
+        <div class="comp-card fade-up" style="transition-delay:0.32s">
+          <span class="comp-icon">📋</span>
+          <div class="comp-title">Reusable Asset Development</div>
+          <div class="comp-desc">Turn one-off work into repeatable, scalable capabilities. Created playbooks, templates, and knowledge base entries that reduced team rework and improved consistency.</div>
+        </div>
+        <div class="comp-card fade-up" style="transition-delay:0.40s">
+          <span class="comp-icon">🤝</span>
+          <div class="comp-title">Cross-Functional Partnership</div>
+          <div class="comp-desc">Fluent across technical and non-technical teams. Translate findings into clear stakeholder recommendations and coordinate across product, engineering, ops, and compliance.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section class="section" id="experience" aria-labelledby="exp-heading">
+    <div class="section-inner">
+      <p class="section-label fade-up">Work History</p>
+      <h2 class="section-heading fade-up" id="exp-heading">5+ years of measurable impact</h2>
+      <p class="section-sub fade-up">A track record of building frameworks, improving processes, and delivering results across enterprise environments.</p>
+
+      <div class="timeline">
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-meta">
+            <span class="timeline-role">Applied AI and Operations Analyst</span>
+            <span class="timeline-date">Dec 2023 – May 2026</span>
+          </div>
+          <div class="timeline-company">DXC Technology · Atlanta, GA (Remote)</div>
+          <ul class="timeline-bullets">
+            <li>Designed and deployed <strong>AI-enabled triage workflows</strong> to manage 300+ daily service requests in ServiceNow, achieving a <strong>25% improvement</strong> in customer satisfaction scores.</li>
+            <li>Built structured analytical frameworks to review and evaluate <strong>1,200+ weekly records</strong> for compliance accuracy, surfacing anomalies and delivering data-driven corrective actions.</li>
+            <li>Identified and prioritized operational risks through continuous system monitoring, reducing risk exposure by <strong>20%</strong> through proactive process redesign.</li>
+            <li>Administered Okta, Azure AD, and O365 platforms, creating <strong>reusable documentation templates</strong> that reduced rework across overlapping workflows.</li>
+            <li>Resolved ambiguous multi-system issues end-to-end, <strong>translating technical findings</strong> into clear recommendations for non-technical leadership.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-meta">
+            <span class="timeline-role">IT and Process Optimization Specialist</span>
+            <span class="timeline-date">Apr 2023 – Nov 2023</span>
+          </div>
+          <div class="timeline-company">Rheem Manufacturing Inc. · Atlanta, GA (Remote)</div>
+          <ul class="timeline-bullets">
+            <li>Analyzed recurring support patterns and <strong>redesigned self-service training content</strong>, reducing inbound requests by 20% at scale.</li>
+            <li>Produced <strong>repeatable playbooks</strong> that reduced resolution time and process variability across cross-functional teams.</li>
+            <li>Achieved a <strong>95% customer satisfaction rate</strong> across phone, email, and chat support channels.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-meta">
+            <span class="timeline-role">Research and Adjustment Analyst II</span>
+            <span class="timeline-date">Dec 2022 – Apr 2023</span>
+          </div>
+          <div class="timeline-company">Bank of America · Atlanta, GA (Remote)</div>
+          <ul class="timeline-bullets">
+            <li>Resolved <strong>150+ annual discrepancies</strong> in high-volume financial datasets using structured analytical frameworks, reducing errors by 20%.</li>
+            <li>Delivered actionable insights on <strong>95% of analyzed records</strong> spanning millions of data points with full compliance documentation.</li>
+            <li>Established <strong>reusable reporting templates</strong> adopted across the team, turning one-off audit work into scalable capability.</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item fade-up">
+          <div class="timeline-meta">
+            <span class="timeline-role">Senior Client Support and Workflow Analyst</span>
+            <span class="timeline-date">Mar 2021 – Oct 2022</span>
+          </div>
+          <div class="timeline-company">Bank of America · Atlanta, GA (Remote)</div>
+          <ul class="timeline-bullets">
+            <li>Tracked and resolved support cases across <strong>50+ partner banks</strong>, maintaining complete audit trails using structured ticketing workflows.</li>
+            <li>Built <strong>repeatable categorization frameworks</strong> that improved throughput and reduced case misrouting.</li>
+            <li>Applied root-cause analysis to encoding errors, preventing recurrence through systematic cross-functional corrective action.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section class="section section--alt" id="skills" aria-labelledby="skills-heading">
+    <div class="section-inner">
+      <p class="section-label fade-up">Technical Toolkit</p>
+      <h2 class="section-heading fade-up" id="skills-heading">Tools &amp; technologies</h2>
+      <p class="section-sub fade-up">The platforms, practices, and capabilities I work with day-to-day.</p>
+      <div class="skills-grid">
+        <div class="skill-group fade-up">
+          <div class="skill-group-title">AI &amp; Automation</div>
+          <div class="skill-tags">
+            <span class="skill-tag featured">LLM Prompt Engineering</span>
+            <span class="skill-tag featured">AI Workflow Prototyping</span>
+            <span class="skill-tag featured">Automation Tool Integration</span>
+            <span class="skill-tag">Process Augmentation</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up" style="transition-delay:0.1s">
+          <div class="skill-group-title">Analytics &amp; Data</div>
+          <div class="skill-tags">
+            <span class="skill-tag featured">Structured Data Synthesis</span>
+            <span class="skill-tag featured">Trend Analysis</span>
+            <span class="skill-tag">Root-Cause Analysis</span>
+            <span class="skill-tag">Discrepancy Resolution</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up" style="transition-delay:0.15s">
+          <div class="skill-group-title">Platforms</div>
+          <div class="skill-tags">
+            <span class="skill-tag featured">ServiceNow</span>
+            <span class="skill-tag featured">Okta</span>
+            <span class="skill-tag featured">Azure AD</span>
+            <span class="skill-tag">O365</span>
+            <span class="skill-tag">Google Workspace</span>
+            <span class="skill-tag">Zendesk</span>
+            <span class="skill-tag">Talkdesk</span>
+            <span class="skill-tag">AnyConnect</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up" style="transition-delay:0.2s">
+          <div class="skill-group-title">IT Practices</div>
+          <div class="skill-tags">
+            <span class="skill-tag featured">ITIL Fundamentals</span>
+            <span class="skill-tag featured">Agile / Scrum (CSM)</span>
+            <span class="skill-tag">SLAs &amp; OLAs</span>
+            <span class="skill-tag">Post-Incident Reviews</span>
+            <span class="skill-tag">KCS Documentation</span>
+            <span class="skill-tag">Change Management</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up" style="transition-delay:0.25s">
+          <div class="skill-group-title">Troubleshooting</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Windows / macOS / Linux</span>
+            <span class="skill-tag">SaaS &amp; Web Apps</span>
+            <span class="skill-tag">SSO &amp; Identity (Okta)</span>
+            <span class="skill-tag">Endpoint Agents</span>
+          </div>
+        </div>
+        <div class="skill-group fade-up" style="transition-delay:0.3s">
+          <div class="skill-group-title">Networking</div>
+          <div class="skill-tags">
+            <span class="skill-tag">TCP/IP · DNS · DHCP</span>
+            <span class="skill-tag">VPNs &amp; VLANs</span>
+            <span class="skill-tag">Firewall Basics</span>
+            <span class="skill-tag">Packet Capture &amp; Log Analysis</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section class="section section--dark" id="education" aria-labelledby="edu-heading">
+    <div class="section-inner">
+      <p class="section-label fade-up">Education &amp; Credentials</p>
+      <h2 class="section-heading fade-up" id="edu-heading">Academic background</h2>
+      <p class="section-sub fade-up">Formal education combined with hands-on industry training.</p>
+      <div class="edu-grid">
+        <div class="edu-card fade-up">
+          <div class="edu-icon">🎓</div>
+          <div class="edu-degree">B.S. Information Technology</div>
+          <div class="edu-school">Western Governors University</div>
+          <div class="edu-note">In Progress</div>
+        </div>
+        <div class="edu-card fade-up" style="transition-delay:0.1s">
+          <div class="edu-icon">🏆</div>
+          <div class="edu-degree">Technology &amp; Business Development</div>
+          <div class="edu-school">Year Up Apprenticeship</div>
+          <div class="edu-note">Graduated May 2021 · Atlanta, GA</div>
+        </div>
+        <div class="edu-card fade-up" style="transition-delay:0.2s">
+          <div class="edu-icon">✅</div>
+          <div class="edu-degree">Certified Scrum Master (CSM)</div>
+          <div class="edu-school">Agile Enterprise Coach</div>
+          <div class="edu-note">Active certification</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contact" aria-labelledby="contact-heading">
+    <div class="section-inner">
+      <div class="contact-wrap">
+        <div class="contact-left fade-up">
+          <p class="section-label">Get in Touch</p>
+          <h2 id="contact-heading">Let's talk about<br/>what we can build.</h2>
+          <p>I'm actively exploring opportunities where I can apply AI-enabled analysis and process design to high-impact problems. If you're at Nymbus or working on something similar — I'd love to connect.</p>
+          <div class="contact-links">
+            <a href="mailto:collinsasiatech@gmail.com" class="contact-link">
+              <div class="contact-link-icon">📧</div>
+              <div class="contact-link-text">
+                <strong>Email</strong>
+                <span>collinsasiatech@gmail.com</span>
+              </div>
+            </a>
+            <div class="contact-link">
+              <div class="contact-link-icon">📍</div>
+              <div class="contact-link-text">
+                <strong>Location</strong>
+                <span>Atlanta, GA · Open to Remote</span>
+              </div>
+            </div>
+            <div class="contact-link">
+              <div class="contact-link-icon">📞</div>
+              <div class="contact-link-text">
+                <strong>Phone</strong>
+                <span>(470) 681-8205</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-right fade-up" style="transition-delay:0.15s">
+          <h3>Send a message</h3>
+          <p>Use the form below or email directly — I typically respond within 24 hours.</p>
+          <div class="contact-fields">
+            <input type="text" placeholder="Your name" aria-label="Your name" />
+            <input type="email" placeholder="Your email" aria-label="Your email" />
+            <input type="text" placeholder="Subject" aria-label="Subject" />
+            <textarea placeholder="Your message..." aria-label="Your message"></textarea>
+            <button class="contact-submit" onclick="handleContact(event)">Send Message →</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-name">Asia <span>Collins</span> · Applied AI Analyst</div>
+    <div class="footer-note">collinsasiatech@gmail.com · Atlanta, GA</div>
+  </footer>
+
+  <script>
+    // ── TYPEWRITER ───────────────────────────────────────────────────────────
+    const phrases = [
+      "AI workflow design",
+      "process optimization",
+      "analytical frameworks",
+      "LLM tool application",
+      "insight generation",
+      "scalable playbooks",
+      "cross-functional collab",
+    ];
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    let paused = false;
+    const el = document.getElementById("typewriter");
+
+    function typeStep() {
+      if (paused) { setTimeout(typeStep, 1200); paused = false; return; }
+      const current = phrases[phraseIdx];
+      if (!deleting) {
+        charIdx++;
+        el.textContent = current.slice(0, charIdx);
+        if (charIdx === current.length) { deleting = true; paused = true; }
+        setTimeout(typeStep, 60);
+      } else {
+        charIdx--;
+        el.textContent = current.slice(0, charIdx);
+        if (charIdx === 0) {
+          deleting = false;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+        }
+        setTimeout(typeStep, 30);
+      }
+    }
+    typeStep();
+
+    // ── SCROLL FADE-IN ───────────────────────────────────────────────────────
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".fade-up").forEach(el => observer.observe(el));
+
+    // ── NAV SCROLL EFFECT ────────────────────────────────────────────────────
+    const nav = document.querySelector(".nav");
+    window.addEventListener("scroll", () => {
+      nav.style.boxShadow = window.scrollY > 40
+        ? "0 4px 24px rgba(0,0,0,0.25)"
+        : "none";
+    });
+
+    // ── CONTACT FORM ─────────────────────────────────────────────────────────
+    function handleContact(e) {
+      e.preventDefault();
+      const btn = e.target;
+      btn.textContent = "✓ Message sent!";
+      btn.style.background = "#00A891";
+      setTimeout(() => {
+        btn.textContent = "Send Message →";
+        btn.style.background = "";
+      }, 3000);
+    }
+
+    // ── SMOOTH SCROLL FOR NAV LINKS ──────────────────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", e => {
+        const target = document.querySelector(a.getAttribute("href"));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
